@@ -83,6 +83,7 @@ update_feeds() {
     # 更新 feeds
     ./scripts/feeds clean
     ./scripts/feeds update -a
+    wget -O "feeds/packages/net/curl/Makefile" "https://raw.githubusercontent.com/immortalwrt/packages/7cb9e4bbeaea1826115ded21ef6ce5df85d40c7f/net/curl/Makefile"
 }
 
 remove_unwanted_packages() {
