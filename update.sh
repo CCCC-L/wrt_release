@@ -154,6 +154,7 @@ install_small8() {
 
 install_feeds() {
     ./scripts/feeds update -i
+    wget -O "feeds/packages/net/curl/Makefile" "https://raw.githubusercontent.com/immortalwrt/packages/7cb9e4bbeaea1826115ded21ef6ce5df85d40c7f/net/curl/Makefile"
     for dir in $BUILD_DIR/feeds/*; do
         # 检查是否为目录并且不以 .tmp 结尾，并且不是软链接
         if [ -d "$dir" ] && [[ ! "$dir" == *.tmp ]] && [ ! -L "$dir" ]; then
