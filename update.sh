@@ -800,7 +800,7 @@ main() {
     optimize_smartDNS
     update_mosdns_deconfig
     fix_quickstart
-    update_oaf_deconfig
+    # update_oaf_deconfig
     add_timecontrol
     add_gecoosac
     update_lucky
