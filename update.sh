@@ -753,13 +753,22 @@ fix_rust_compile_error() {
     fi
 }
 
+changeWifiInfo() {
+    # 修改默认 WiFi 配置
+    sed -i "s/ssid=Redmi_AX6/ssid=neko/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
+    sed -i "s/ssid=Redmi_AX6_5G/ssid=neko_5G/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
+    # 清空密码
+    sed -i '/key=/d' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+    sed -i 's/encryption=psk2/encryption=none/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+}
+
 main() {
     clone_repo
     clean_up
     reset_feeds_conf
     update_feeds
     remove_unwanted_packages
-    update_homeproxy
+    # update_homeproxy
     fix_default_set
     fix_miniupnpd
     update_golang
@@ -774,31 +783,32 @@ main() {
     # fix_mkpkg_format_invalid
     chanage_cpuusage
     update_tcping
-    add_ax6600_led
-    set_custom_task
-    update_pw
+    # add_ax6600_led
+    # set_custom_task
+    # update_pw
     install_opkg_distfeeds
     update_nss_pbuf_performance
     set_build_signature
-    fix_compile_vlmcsd
+    # fix_compile_vlmcsd
     update_nss_diag
     update_menu_location
     fix_compile_coremark
     update_dnsmasq_conf
-    add_backup_info_to_sysupgrade
-    optimize_smartDNS
-    update_mosdns_deconfig
-    fix_quickstart
-    update_oaf_deconfig
-    add_timecontrol
-    add_gecoosac
-    update_lucky
+    # add_backup_info_to_sysupgrade
+    # optimize_smartDNS
+    # update_mosdns_deconfig
+    # fix_quickstart
+    # update_oaf_deconfig
+    # add_timecontrol
+    # add_gecoosac
+    # update_lucky
     fix_rust_compile_error
     install_feeds
-    support_fw4_adg
+    # support_fw4_adg
     update_script_priority
-    fix_easytier
+    # fix_easytier
     update_geoip
+    changeWifiInfo
     # update_package "xray-core"
     # update_proxy_app_menu_location
     # update_dns_app_menu_location
