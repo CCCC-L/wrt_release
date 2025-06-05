@@ -753,15 +753,6 @@ fix_rust_compile_error() {
     fi
 }
 
-changeWifiInfo() {
-    # 修改默认 WiFi 配置
-    sed -i "s/ssid=Redmi_AX6/ssid=neko/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
-    sed -i "s/ssid=Redmi_AX6_5G/ssid=neko_5G/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
-    # 清空密码
-    sed -i '/key=/d' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-    sed -i 's/encryption=psk2/encryption=none/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-}
-
 main() {
     clone_repo
     clean_up
@@ -808,7 +799,6 @@ main() {
     update_script_priority
     # fix_easytier
     update_geoip
-    changeWifiInfo
     # update_package "xray-core"
     # update_proxy_app_menu_location
     # update_dns_app_menu_location
